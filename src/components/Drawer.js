@@ -1,58 +1,22 @@
 import React from 'react'
 
-function Drawer() {
+function Drawer({ onClose, items = [] }) {
     return (
-        <div style={{ display: 'none' }} className="overlay">
+        <div className="overlay">
             <div className="drawer">
                 <h2 className="mb-30 d-flex justify-between">
-                    Корзина <img className="cu-p" src="/img/btn-remove.svg" alt="remove" />
+                    Корзина <img className="cu-p" onClick={onClose} src="/img/btn-remove.svg" alt="close" />
                 </h2>
                 <div className="items">
-                    <div className="cartItem d-flex align-center mb-20">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }} className="cartItemImg">
+                    {items.map((obj) => (
+                        <div className="cartItem d-flex align-center mb-20">
+                            <div className="cartItemImg" style={{ backgroundImage: `url(${obj.imageUrl})` }}></div>
+                            <div className="mr-20 d-flex">
+                                <p className="mb-5">{obj.title}</p>
+                                <b>{obj.price} руб.</b>
+                            </div>
                         </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские кроссовки Nike Blaze Mid Suede</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
-                    </div>
-                    <div className="cartItem d-flex align-center mb-20">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }} className="cartItemImg">
-                        </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские кроссовки Nike Blaze Mid Suede</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
-                    </div>
-                    <div className="cartItem d-flex align-center mb-20">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/3.jpg)' }} className="cartItemImg">
-                        </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские кроссовки Nike Blaze Mid Suede</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
-                    </div>
-                    <div className="cartItem d-flex align-center mb-20">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }} className="cartItemImg">
-                        </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские кроссовки Nike Blaze Mid Suede</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
-                    </div>
-                    <div className="cartItem d-flex align-center">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }} className="cartItemImg">
-                        </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские кроссовки Nike Blaze Mid Suede</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
-                    </div>
+                    ))}
                 </div>
                 <div className="cartTotalBlock">
                     <ul className="cartTotalBlock">
