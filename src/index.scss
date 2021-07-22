@@ -1,5 +1,5 @@
 body {
-  background-color: #E7F6FF;
+  background-color: #e7f6ff;
   margin: 0;
   font-family: 'Inter', system-ui;
   -webkit-font-smoothing: antialiased;
@@ -11,22 +11,19 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .wrapper {
   background: #fff;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, .04);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
   margin: 50px auto;
-
 }
 
 header {
   border-bottom: 1px solid #eaeaea;
-
   img {
     margin-right: 15px;
   }
@@ -34,6 +31,10 @@ header {
   h3,
   p {
     margin: 0;
+  }
+
+  span {
+    vertical-align: top;
   }
 }
 
@@ -43,10 +44,47 @@ header {
   }
 }
 
+.cartEmpty {
+  text-align: center;
+
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+
+  .greenBtn {
+    width: 245px;
+    margin-top: 20px;
+
+    &:hover {
+      img {
+        transform: rotate(180deg) translate(3px);
+      }
+    }
+
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+}
+
 .search-block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 15px;
+    top: 13px;
+  }
 
   input {
     border: none;
@@ -57,7 +95,7 @@ header {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -74,14 +112,13 @@ header {
   height: 100%;
   right: 0;
   background: #fff;
-  box-shadow: -10px 4px 24px rgba(0, 0, 0, .5);
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.5);
   padding: 30px;
 
   .items {
     flex: 1;
     overflow: auto;
     margin-bottom: 40px;
-
   }
 
   h2 {
@@ -101,6 +138,10 @@ header {
   cursor: pointer;
   transition: background 0.1s ease-in-out;
 
+  &:disabled {
+    background-color: #bebebe !important;
+    cursor: default;
+  }
   &:hover {
     background: lighten(#9dd558, 5%);
   }
@@ -109,7 +150,6 @@ header {
     background: darken(#9dd558, 5%);
   }
 }
-
 
 .cartTotalBlock {
   ul {
@@ -130,11 +170,14 @@ header {
         margin: 0 10px;
       }
     }
-
   }
 
   .greenBtn {
     position: relative;
+
+    &:disabled {
+      animation: button-loading 0.6s ease-in-out infinite;
+    }
 
     &:hover {
       img {
@@ -147,7 +190,6 @@ header {
       right: 30px;
       top: 20px;
       transition: transform 0.15s ease-in-out;
-
     }
   }
 }
@@ -177,12 +219,23 @@ header {
   }
 
   .removeBtn {
-    opacity: .5;
+    opacity: 0.5;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
 
     &:hover {
       opacity: 1;
     }
+  }
+}
+@keyframes button-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
   }
 }
