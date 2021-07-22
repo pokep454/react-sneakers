@@ -9,7 +9,7 @@ import Card from '../components/Card';
    setSearchValue, 
    onChangeSearchInput, 
    onAddToFavorite, 
-   onAddToCard, 
+   onAddToCart, 
    isLoading
   }) {
 
@@ -21,7 +21,7 @@ import Card from '../components/Card';
       <Card
         key={index}
         onFavorite={(obj) => onAddToFavorite(obj)}
-        onPlus={(obj) => onAddToCard(obj)}
+        onPlus={(obj) => onAddToCart(obj)}
         loading={isLoading}
         {...item}
       />
